@@ -15,20 +15,39 @@
 #  limitations under the License.
 #
 # =========================================================================
+import numpy as np
+
+"""
+These functions test the sorting algorithms in the /sort_lib/int_sort.py file.
+
+Notes to Self:
+    Not sure what self is suppose to do here...
+"""
 
 class TestIntSort:
-
-	def is_sorted(self, int_list):
-		"""
-		Testing oracle.
-		"""
-		return True
-
-	def test_bubble(self, int_list):
-		assert True
-			  
-	def test_quick(self, int_list):
-  		assert True
-  		
-	def test_insertion(self, int_list):
-		assert True
+    def is_sorted(self, int_list):
+        sorted_list = int_list
+        for i in range(len(sort_list)-1):
+            if sorted_list[i]<sorted_list[i-1]:
+                assert False
+        assert True
+    def test_bubble(self, int_list):
+        sorted_list = bubble(int_list)
+        for i in range(len(sort_list)-1):
+            if sorted_list[i]<sorted_list[i-1]:
+                assert False
+        assert True
+    def test_quick(self, int_list):
+        sorted_list = quick(int_list)
+        for i in range(len(sort_list)-1):
+            if sorted_list[i]<sorted_list[i-1]:
+                assert False
+        assert True
+    def test_insertion(self, int_list):
+        sorted_list = insertion(int_list)
+        for i in range(len(sort_list)-1):
+            if sorted_list[i]<sorted_list[i-1]:
+                assert False
+        assert True				  
+        
+intlist = np.random.randint(1,100,100)
