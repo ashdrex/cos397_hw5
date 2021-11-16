@@ -2,13 +2,16 @@ name: Sort Lib
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
-      
+    branches: [ master ]
+
 jobs:
   linting:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.8
@@ -30,10 +33,11 @@ jobs:
   test:
     # only run the code testing if linting passed
     needs: linting
+    runs-on: ${{ matrix.os }}
     strategy:
-	  matrix:
+      matrix:
+        os: [macos-latest, ubuntu-latest, ubuntu-latest]
         python-version: [3.6, 3.9]
-    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -48,19 +52,19 @@ jobs:
       run: |
         python -m pytest
 
-
   packaging:
     # only run the packaging if testing passed
     needs: test
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [macos-latest, ubuntu-latest, ubuntu-latest]
         python-version: [3.6, 3.9]
-    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
