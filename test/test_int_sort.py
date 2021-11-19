@@ -17,6 +17,8 @@
 # =========================================================================
 import numpy as np
 
+import sort_lib as sort
+
 """
 These functions test the sorting algorithms in the /sort_lib/int_sort.py file.
 
@@ -28,31 +30,31 @@ Notes to Self:
 class TestIntSort:
     def is_sorted(self, int_list):
         sorted_list = int_list
-        for i in range(len(sort_list) - 1):
+        for i in range(len(sorted_list) - 1):
             if sorted_list[i] < sorted_list[i - 1]:
                 assert False
         assert True
 
     def test_bubble(self, int_list):
-        sorted_list = bubble(int_list)
-        for i in range(len(sort_list) - 1):
+        sorted_list = sort.bubble(int_list)
+        for i in range(len(sorted_list) - 1):
             if sorted_list[i] < sorted_list[i - 1]:
                 assert False
         assert True
 
     def test_quick(self, int_list):
-        sorted_list = quick(int_list)
-        for i in range(len(sort_list) - 1):
+        sorted_list = sort.quick(int_list)
+        for i in range(len(sorted_list) - 1):
             if sorted_list[i] < sorted_list[i - 1]:
                 assert False
         assert True
 
     def test_insertion(self, int_list):
-        sorted_list = insertion(int_list)
-        for i in range(len(sort_list) - 1):
+        sorted_list = sort.insertion(int_list)
+        for i in range(len(sorted_list) - 1):
             if sorted_list[i] < sorted_list[i - 1]:
                 assert False
         assert True
 
 
-intlist = np.random.randint(1, 100, 100)
+int_list = np.random.randint(1, 100, 100)
