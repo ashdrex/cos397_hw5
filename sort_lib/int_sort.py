@@ -26,6 +26,8 @@ bubble sort
 """
 
 
+import numpy as np
+
 def bubble(int_list):
     # don't use unnecessary processing power
     if len(int_list) == 1:
@@ -113,3 +115,7 @@ def insertion(int_list):
             int_list[j + 1] = int_list[j]
             j -= 1
         int_list[j + 1] = key
+
+
+int_list = np.random.randint(1, 100, 100)
+print(insertion(int_list))
