@@ -17,12 +17,6 @@
 # =========================================================================
 
 
-#############note: remove before commit
-import sys
-
-sys.path.insert(0, "c:/Users/yankh/Desktop/cos397_hw5-master/cos397_hw5/")
-################
-
 import pytest
 import numpy as np
 from sort_lib import int_sort as sort
@@ -44,30 +38,29 @@ class TestIntSort:
         return True
 
     def test_bubble(self, int_list):
-        sorted_list = sort.bubble(int_list)
-        for i in range(1, (len(sorted_list) - 1)):
-            if sorted_list[i] < sorted_list[i - 1]:
+        sort.bubble(int_list)
+        for i in range(1, (len(int_list) - 1)):
+            if int_list[i] < int_list[i - 1]:
                 assert False
         assert True
 
     def test_quick(self, int_list):
-        sorted_list = sort.quick(int_list)
-        for i in range(1, (len(sorted_list) - 1)):
-            if sorted_list[i] < sorted_list[i - 1]:
+        sort.quick(int_list)
+        for i in range(1, (len(int_list) - 1)):
+            if int_list[i] < int_list[i - 1]:
                 assert False
         assert True
 
     def test_insertion(self, int_list):
-        sorted_list = sort.insertion(int_list)
-        for i in range(1, (len(sorted_list) - 1)):
-            if sorted_list[i] < sorted_list[i - 1]:
+        sort.insertion(int_list)
+        for i in range(1, (len(int_list) - 1)):
+            if int_list[i] < int_list[i - 1]:
                 assert False
         assert True
 
+
 @pytest.fixture(autouse=True)
 def int_list():
-    
+
     int_list = np.random.randint(1, 100, 100)
     yield int_list
-
-#int_list = np.random.randint(1, 100, 100)
