@@ -76,7 +76,7 @@ jobs:
       run: |
         python -m build
         # see that the dist directory contains the wheel
-        ls -la dist
+        ls dist
     - name: Upload package
       if: github.event_name == 'push'
       uses: actions/upload-artifact@v2
