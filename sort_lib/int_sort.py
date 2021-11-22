@@ -21,8 +21,12 @@ This module sorts lists of integers...
 Use bubble, quick, or insertion.
 """
 
+
 """
-bubble sort
+Bubble Sort
+
+@param int_list: this is a list of integers
+@return: int_list (now sorted)
 """
 
 
@@ -45,7 +49,12 @@ def bubble(int_list):
 
 
 """
-quick sort
+Quick Sort
+
+@param int_list: this is a list of integers
+@param low: this is the first element
+@param high: this is the last element
+@return: int_list (now sorted)
 """
 
 
@@ -92,7 +101,10 @@ def quick(int_list):
 
 
 """
-insertion sort
+Insertion Sort
+
+@param int_list: this is a list of integers
+@return: int_list (now sorted)
 """
 
 
