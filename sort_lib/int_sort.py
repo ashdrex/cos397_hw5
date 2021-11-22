@@ -22,7 +22,10 @@ Use bubble, quick, or insertion.
 '''
 
 '''
-bubble sort
+Bubble Sort
+
+@param int_list: this is a list of integers
+@return: int_list (now sorted)
 '''
 def bubble(int_list):
   # don't use unnecessary processing power
@@ -42,7 +45,12 @@ def bubble(int_list):
         int_list[j+1] = temp
 
 '''
-quick sort
+Quick Sort
+
+@param int_list: this is a list of integers
+@param low: this is the first element
+@param high: this is the last element
+@return: int_list (now sorted)
 '''
 def partition(int_list, low, high):
   # begin with high end as pivot
@@ -86,7 +94,10 @@ def quick(int_list):
   return quicksort(int_list, low, high)
 
 '''
-insertion sort
+Insertion Sort
+
+@param int_list: this is a list of integers
+@return: int_list (now sorted)
 '''
 def insertion(int_list):
   # don't use unnecessary processing power
