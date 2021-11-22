@@ -62,7 +62,7 @@ def partition(int_list, low, high):
             i = i + 1  # specify greater element
 
             # swap elements i and j
-            (int_list[i], int_list[j]) = (int_list[i], int_list[j])
+            (int_list[i], int_list[j]) = (int_list[j], int_list[i])
     # swap pivot element with greater element specified by i
     (int_list[i + 1], int_list[high]) = (int_list[high], int_list[i + 1])
 
@@ -84,9 +84,8 @@ def quick(int_list):
         return int_list
 
     # get low and high values
-    low = int_list[0]
-    max_index = len(int_list) - 1
-    high = int_list[max_index]
+    low = 0
+    high = len(int_list) - 1
 
     # call quicksort
     return quicksort(int_list, low, high)
@@ -103,13 +102,16 @@ def insertion(int_list):
         return int_list
 
     # traverse through all list elements
-    for i in range(0, len(int_list) - 1):
+    for i in range(1, len(int_list)):
         key = int_list[i]
 
         # move all of elements that are greater than key one position ahead
         j = i - 1
 
-        while j >= 0 and key < int_list:
+        while j >= 0 and key < int_list[j]:
             int_list[j + 1] = int_list[j]
             j -= 1
         int_list[j + 1] = key
+
+
+# int_list = np.random.randint(1, 100, 100)
