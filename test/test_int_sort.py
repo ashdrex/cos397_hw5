@@ -15,7 +15,11 @@
 #  limitations under the License.
 #
 # =========================================================================
+
+
+import pytest
 import numpy as np
+from sort_lib import int_sort as sort
 
 """
 These functions test the sorting algorithms in the /sort_lib/int_sort.py file.
@@ -24,30 +28,39 @@ Notes to Self:
     Not sure what self is suppose to do here...
 """
 
+
 class TestIntSort:
     def is_sorted(self, int_list):
         sorted_list = int_list
-        for i in range(len(sort_list)-1):
-            if sorted_list[i]<sorted_list[i-1]:
-                assert False
-        assert True
+        for i in range(1, (len(sorted_list) - 1)):
+            if sorted_list[i] < sorted_list[i - 1]:
+                return False
+        return True
+
     def test_bubble(self, int_list):
-        sorted_list = bubble(int_list)
-        for i in range(len(sort_list)-1):
-            if sorted_list[i]<sorted_list[i-1]:
+        sort.bubble(int_list)
+        for i in range(1, (len(int_list) - 1)):
+            if int_list[i] < int_list[i - 1]:
                 assert False
         assert True
+
     def test_quick(self, int_list):
-        sorted_list = quick(int_list)
-        for i in range(len(sort_list)-1):
-            if sorted_list[i]<sorted_list[i-1]:
+        sort.quick(int_list)
+        for i in range(1, (len(int_list) - 1)):
+            if int_list[i] < int_list[i - 1]:
                 assert False
         assert True
+
     def test_insertion(self, int_list):
-        sorted_list = insertion(int_list)
-        for i in range(len(sort_list)-1):
-            if sorted_list[i]<sorted_list[i-1]:
+        sort.insertion(int_list)
+        for i in range(1, (len(int_list) - 1)):
+            if int_list[i] < int_list[i - 1]:
                 assert False
-        assert True				  
-        
-intlist = np.random.randint(1,100,100)
+        assert True
+
+
+@pytest.fixture(autouse=True)
+def int_list():
+
+    int_list = np.random.randint(1, 100, 100)
+    yield int_list

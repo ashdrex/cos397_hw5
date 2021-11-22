@@ -16,102 +16,114 @@
 #
 # =========================================================================
 
-'''
+"""
 This module sorts lists of integers...
 Use bubble, quick, or insertion.
-'''
+"""
 
-'''
+
+"""
 Bubble Sort
 
 @param int_list: this is a list of integers
 @return: int_list (now sorted)
-'''
+"""
+
+
 def bubble(int_list):
-  # don't use unnecessary processing power
-  if len(int_list) == 1:
-    return int_list
+    # don't use unnecessary processing power
+    if len(int_list) == 1:
+        return int_list
 
-  # get the length of the list
-  length = len(int_list)
+    # get the length of the list
+    length = len(int_list)
 
-  # traverse through all list elements
-  for i in range(length-1):             # traverse the length
-    for j in range(0, length-1-i):      # account for elements in place
-      if int_list[j] > int_list[j+1]:
-        # swap
-        int temp = int_list[j]
-        int_list[j] = int_list[j+1]
-        int_list[j+1] = temp
+    # traverse through all list elements
+    for i in range(length - 1):  # traverse the length
+        for j in range(0, length - 1 - i):  # account for elements in place
+            if int_list[j] > int_list[j + 1]:
+                # swap
+                temp = int_list[j]
+                int_list[j] = int_list[j + 1]
+                int_list[j + 1] = temp
 
-'''
+
+"""
 Quick Sort
 
 @param int_list: this is a list of integers
 @param low: this is the first element
 @param high: this is the last element
 @return: int_list (now sorted)
-'''
+"""
+
+
 def partition(int_list, low, high):
-  # begin with high end as pivot
-  pivot = int_list[high]
+    # begin with high end as pivot
+    pivot = int_list[high]
 
-  # pointer for high element
-  i = low - 1
+    # pointer for high element
+    i = low - 1
 
-  # traverse through all list elements
-  for j in range(low, high):
-    if int_list[j] <= pivot:
-      i = i + 1 # specify greater element
+    # traverse through all list elements
+    for j in range(low, high):
+        if int_list[j] <= pivot:
+            i = i + 1  # specify greater element
 
-      #swap elements i and j
-      (int_list[i], int_list[j]) = (int_list[i], int_list[j])
-  # swap pivot element with greater element specified by i
-  (int_list[i+1], int_list[high]) = (int_list[high], int_list[i+1])
-  
-  # return the position of where partition is done
-  return i + 1
+            # swap elements i and j
+            (int_list[i], int_list[j]) = (int_list[j], int_list[i])
+    # swap pivot element with greater element specified by i
+    (int_list[i + 1], int_list[high]) = (int_list[high], int_list[i + 1])
+
+    # return the position of where partition is done
+    return i + 1
 
 
 def quicksort(int_list, low, high):
-  if(low < high):
-    pi = partition(int_list, low, high)  # split indices in halves
+    if low < high:
+        pi = partition(int_list, low, high)  # split indices in halves
 
-    quicksort(int_list, low, pi-1)       # quicksort low end
-    quicksort(int_list, pi+1, high)      # quicksort high end
+        quicksort(int_list, low, pi - 1)  # quicksort low end
+        quicksort(int_list, pi + 1, high)  # quicksort high end
+
 
 def quick(int_list):
-  # don't use unnecessary processing power
-  if len(int_list) == 1:
-    return int_list
-  
-  # get low and high values
-  low = int_list[0]
-  max_index = len(int_list)-1
-  high = int_list[max_index]
+    # don't use unnecessary processing power
+    if len(int_list) == 1:
+        return int_list
 
-  # call quicksort
-  return quicksort(int_list, low, high)
+    # get low and high values
+    low = 0
+    high = len(int_list) - 1
 
-'''
+    # call quicksort
+    return quicksort(int_list, low, high)
+
+
+"""
 Insertion Sort
 
 @param int_list: this is a list of integers
 @return: int_list (now sorted)
-'''
+"""
+
+
 def insertion(int_list):
-  # don't use unnecessary processing power
-  if len(int_list) == 1:
-    return int_list
+    # don't use unnecessary processing power
+    if len(int_list) == 1:
+        return int_list
 
-  # traverse through all list elements
-  for i in range(0, len(int_list)-1):
-    key = int_list[i]
+    # traverse through all list elements
+    for i in range(1, len(int_list)):
+        key = int_list[i]
 
-    # move all of elements that are greater than key one position ahead
-    j = i-1
+        # move all of elements that are greater than key one position ahead
+        j = i - 1
 
-    while j >= 0 and key < int_list:
-      int_list[j+1] = int_list[j]
-      j -= 1
-    int_list[j+1] = key
+        while j >= 0 and key < int_list[j]:
+            int_list[j + 1] = int_list[j]
+            j -= 1
+        int_list[j + 1] = key
+
+
+# int_list = np.random.randint(1, 100, 100)
